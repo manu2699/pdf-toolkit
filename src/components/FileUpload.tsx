@@ -1,7 +1,8 @@
-import React from 'react';
-import { Upload, Plus } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { clsx } from 'clsx';
+import React from "react";
+import { Plus } from "lucide-react";
+import { motion } from "motion/react";
+import { clsx } from "clsx";
+import { UploadIcon } from "./icons/Upload";
 
 interface FileUploadProps {
   onFileSelect: (files: File[]) => void;
@@ -14,7 +15,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   onFileSelect,
   multiple = false,
   className,
-  compact = false
+  compact = false,
 }) => {
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -24,11 +25,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     const files = Array.from(e.dataTransfer.files).filter(
-      file => file.type === 'application/pdf'
+      (file) => file.type === "application/pdf"
     );
-    
+
     if (files.length > 0) {
       onFileSelect(multiple ? files : [files[0]]);
     }
@@ -43,10 +44,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
 
   if (compact) {
     return (
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
         <label
           htmlFor="file-upload-compact"
           className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors cursor-pointer"
@@ -87,9 +85,14 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       />
       <label htmlFor="file-upload" className="block p-8 cursor-pointer">
         <div className="flex flex-col items-center justify-center">
-          <Upload className="w-12 h-12 text-gray-400 dark:text-gray-500 mb-4" />
+          <UploadIcon
+            w={24}
+            h={24}
+            className="text-gray-700 dark:text-zinc-400"
+          />
           <p className="text-gray-600 dark:text-gray-400 text-center">
-            Drag & drop PDF {multiple ? 'files' : 'file'} here<br />
+            Drag & drop PDF {multiple ? "files" : "file"} here
+            <br />
             or click to browse
           </p>
         </div>
