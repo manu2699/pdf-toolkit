@@ -1,5 +1,17 @@
 import React from "react";
-import { Plus, X } from "lucide-react";
+import { Columns4, Layers, Layers2Icon, Plus, X } from "lucide-react";
+
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./common/Select";
+
+import { Tabs, Tab } from "./common/Tabs";
+
+const SplitTypes = {
+  Range: "Range",
+  Pages: "Pages",
+  Parts: "Parts",
+};
+
+// type SplitType = keyof typeof SplitTypes;
 
 interface PageRangeInputProps {
   ranges: string[];
@@ -27,8 +39,24 @@ export const PageRangeInput: React.FC<PageRangeInputProps> = ({
   return (
     <div className="space-y-3">
       <label className="block text-md font-medium text-gray-700 dark:text-gray-300">
-        Page Ranges
+        Split By
       </label>
+
+      <Tabs value={SplitTypes.Range} layout="vertical">
+        <Tab value={SplitTypes.Range}>
+          <Layers2Icon className="w-7 h-7" />
+          Range
+        </Tab>
+        <Tab value={SplitTypes.Pages}>
+          <Layers className="w-7 h-7" />
+          Pages
+        </Tab>
+        <Tab value={SplitTypes.Parts}>
+          <Columns4 className="w-7 h-7" />
+          Parts
+        </Tab>
+      </Tabs>
+
       {ranges.map((range, index) => (
         <div key={index} className="flex gap-2">
           <input

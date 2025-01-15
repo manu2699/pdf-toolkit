@@ -9,7 +9,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   title,
@@ -40,4 +40,4 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-export default Modal;
+

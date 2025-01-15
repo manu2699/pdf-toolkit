@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { PDFDocument } from "pdf-lib";
 import { motion } from "motion/react";
 
-import { FileUpload } from "./FileUpload";
-import { FileItem, UploadedFileList } from "./FileList";
-import { PageRangeInput } from "./PageRangeInput";
-import Modal from "./Modal";
+import { FileUpload } from "./../components/FileUpload";
+import { FileItem, UploadedFileList } from "./../components/FileList";
+import { PageRangeInput } from "./../components/PageRangeInput";
+import { Modal } from "./../components/common/Modal";
 
 interface PDFSplitterProps {
   files: File[];

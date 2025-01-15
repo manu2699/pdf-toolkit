@@ -1,19 +1,23 @@
 import { useState } from "react";
 import { BookText } from "lucide-react";
-import { PDFMerger } from "./components/PDFMerger";
-import { PDFSplitter } from "./components/PDFSplitter";
-import { ThemeToggle } from "./components/ThemeToggle";
-import { OperationToggle } from "./components/OperationToggle";
-import { Toast } from "./components/Toast";
-import { useToast } from "./hooks/useToast";
 import { AnimatePresence } from "motion/react";
+import { SplitIcon, LucideMerge } from "lucide-react";
+
+import { PDFMerger } from "./features/PDFMerger";
+import { PDFSplitter } from "./features/PDFSplitter";
+import { ThemeToggle } from "./components/ThemeToggle";
+import { Tabs, Tab } from "./components/common/Tabs";
+import { Toast } from "./components/common/Toast";
+import { useToast } from "./hooks/useToast";
+
+type Operation = "merge" | "split";
 
 export function App() {
-  const [operation, setOperation] = useState<"merge" | "split">("merge");
+  const [operation, setOperation] = useState<Operation>("merge");
   const [files, setFiles] = useState<File[]>([]);
   const { toasts, showToast, removeToast } = useToast();
 
-  function handleOperationChange(operation: "merge" | "split") {
+  function handleOperationChange(operation: Operation) {
     if (operation === "split" && files.length > 1) {
       setFiles([files[0]]);
     }
@@ -29,10 +33,19 @@ export function App() {
             PDF Toolkit
           </h1>
           <div className="flex gap-4 items-center">
-            <OperationToggle
-              operation={operation}
-              setOperation={handleOperationChange}
-            />
+            <Tabs
+              value={operation}
+              onChange={(value) => handleOperationChange(value as Operation)}
+            >
+              <Tab value="merge">
+                <LucideMerge className="w-4 h-4" />
+                Merge PDFs
+              </Tab>
+              <Tab value="split">
+                <SplitIcon className="w-4 h-4" />
+                Split PDF
+              </Tab>
+            </Tabs>
             <ThemeToggle />
           </div>
         </header>
