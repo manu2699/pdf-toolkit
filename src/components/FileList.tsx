@@ -2,8 +2,8 @@ import React from "react";
 import { Trash2, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-import { DownloadIcon } from "./icons/Download";
-import { ExpandIcon } from "./icons/Expand";
+import { DownloadIcon } from "../icons/Download";
+import { ExpandIcon } from "../icons/Expand";
 
 interface FileListProps {
   files: File[];

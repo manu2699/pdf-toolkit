@@ -2,7 +2,8 @@ import React from "react";
 import { Plus } from "lucide-react";
 import { motion } from "motion/react";
 import { clsx } from "clsx";
-import { UploadIcon } from "./icons/Upload";
+
+import { UploadIcon } from "../icons/Upload";
 
 interface FileUploadProps {
   onFileSelect: (files: File[]) => void;

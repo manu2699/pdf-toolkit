@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { PDFDocument } from "pdf-lib";
 
-import { FileUpload } from "./FileUpload";
-import { FileItem, UploadedFileList } from "./FileList";
-import Modal from "./Modal";
+import { FileUpload } from "./../components/FileUpload";
+import { FileItem, UploadedFileList } from "./../components/FileList";
+import { Modal } from "./../components/common/Modal";
 
 interface PDFMergerProps {
   files: File[];
